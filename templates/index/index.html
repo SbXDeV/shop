@@ -287,7 +287,7 @@
                                                                     <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
                                                                     <div class="product-action">
                                                                         <a class="action-quick-view" href="#"><i class="ion-ios-cart"></i></a>
-                                                                        <a class="action-quick-view" href="#"><i class="ion-arrow-expand"></i></a>
+                                                                        <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
                                                                         <a class="action-quick-view" href="#"><i class="ion-heart"></i></a>
                                                                         <a class="action-quick-view" href="#"><i class="ion-shuffle"></i></a>
                                                                     </div>
@@ -320,7 +320,7 @@
                                                                             <span class="fa fa-star"></span>
                                                                         {% endif %}
                                                                     </div>
-                                                                    <h4 class="title"><a href="#">{{ item.namespace }}</a></h4>
+                                                                    <h4 class="title"><a href="{% url 'indexing:product-detail' item.pk %}">{{ item.namespace }}</a></h4>
                                                                     <div class="prices">
                                                                         <span class="price">{{ item.price }} ₽</span>
                                                                     </div>
@@ -348,7 +348,7 @@
                                                                     <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
                                                                     <div class="product-action">
                                                                         <a class="action-quick-view" href="#"><i class="ion-ios-cart"></i></a>
-                                                                        <a class="action-quick-view" href="#"><i class="ion-arrow-expand"></i></a>
+                                                                        <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
                                                                         <a class="action-quick-view" href="#"><i class="ion-heart"></i></a>
                                                                         <a class="action-quick-view" href="#"><i class="ion-shuffle"></i></a>
                                                                     </div>
@@ -381,7 +381,7 @@
                                                                             <span class="fa fa-star"></span>
                                                                         {% endif %}
                                                                     </div>
-                                                                    <h4 class="title"><a href="#">{{ item.namespace }}</a></h4>
+                                                                    <h4 class="title"><a href="{% url 'indexing:product-detail' item.pk %}">{{ item.namespace }}</a></h4>
                                                                     <div class="prices">
                                                                         <span class="price">{{ item.price }} ₽</span>
                                                                     </div>
@@ -410,7 +410,54 @@
                                                                     <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
                                                                     <div class="product-action">
                                                                         <a class="action-quick-view" href="#"><i class="ion-ios-cart"></i></a>
-                                                                        <a class="action-quick-view" href="#"><i class="ion-arrow-expand"></i></a>
+                                                                        <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
+                                                                        <a class="action-quick-view" href="#"><i class="ion-heart"></i></a>
+                                                                        <a class="action-quick-view" href="#"><i class="ion-shuffle"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="rating">
+                                                                        {% if item.star == 1 %}
+                                                                            <span class="fa fa-star"></span>
+                                                                        {% endif %}
+                                                                        {% if item.star == 2 %}
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                        {% endif %}
+                                                                        {% if item.star == 3 %}
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                        {% endif %}
+                                                                        {% if item.star == 4 %}
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                        {% endif %}
+                                                                        {% if item.star == 5 %}
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <h4 class="title"><a href="{% url 'indexing:product-detail' item.pk %}">{{ item.namespace }}</a></h4>
+                                                                    <div class="prices">
+                                                                        <span class="price">{{ item.price }} ₽</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- End Product Item -->
+                                                        </div>
+                                                            <!-- Start Product Item -->
+                                                            <div class="product-item">
+                                                                <div class="product-thumb">
+                                                                    <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
+                                                                    <div class="product-action">
+                                                                        <a class="action-quick-view" href="#"><i class="ion-ios-cart"></i></a>
+                                                                        <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
                                                                         <a class="action-quick-view" href="#"><i class="ion-heart"></i></a>
                                                                         <a class="action-quick-view" href="#"><i class="ion-shuffle"></i></a>
                                                                     </div>
@@ -729,93 +776,6 @@
 
     <!--== Scroll Top Button ==-->
     <div class="scroll-to-top"><span class="fa fa-angle-double-up"></span></div>
-
-    <!--== Start Product Quick View
-    <aside class="product-quick-view-modal">
-            <div class="product-quick-view-inner">
-                <div class="product-quick-view-content">
-                    <button type="button" class="btn-close">
-                        <span class="pe-7s-close"><i class="lastudioicon-e-remove"></i></span>
-                    </button>
-                    <div class="row row-gutter-0">
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="thumb">
-                                <img src="{% static 'assets/img/shop/quick-view1.jpg' %}" alt="Image">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="single-product-info">
-                                <h4 class="title">{{ item.namespace }}</h4>
-                                <div class="prices">
-                                    <span class="price">$120.59</span>
-                                </div>
-                                <div class="product-rating">
-                                    <div class="rating">
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <div class="review">
-                                        <a href="#">( 5 Customer Review )</a>
-                                    </div>
-                                </div>
-                                <div class="single-product-featured">
-                                    <ul>
-                                        <li><i class="fa fa-check"></i> Free Shipping</li>
-                                        <li><i class="fa fa-check"></i> Support 24/7</li>
-                                        <li><i class="fa fa-check"></i> Money Return</li>
-                                    </ul>
-                                </div>
-                                <p class="product-desc">Lorem ipsum dolor sit amet, consect adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quisll exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duisol aute irure dolor in reprehenderit.</p>
-                                <div class="quick-product-action">
-                                    <div class="action-top">
-                                        <div class="pro-qty">
-                                            <input type="text" id="quantity" title="Quantity" value="01" />
-                                        </div>
-                                        <button class="btn btn-theme">Add to Cart</button>
-                                        <a class="btn-wishlist" href="#">Add to Wishlist</a>
-                                    </div>
-                                </div>
-                                <div class="widget">
-                                    <h3 class="title">SKU:</h3>
-                                    <div class="widget-tags">
-                                        <span>Ch-256xl</span>
-                                    </div>
-                                </div>
-                                <div class="widget">
-                                    <h3 class="title">Categories:</h3>
-                                    <div class="widget-tags">
-                                        <a href="#">Toys.</a>
-                                        <a href="#">Dresss</a>
-                                    </div>
-                                </div>
-                                <div class="widget">
-                                    <h3 class="title">Tag:</h3>
-                                    <div class="widget-tags">
-                                        <a href="#">Toys,</a>
-                                        <a href="#">Dress</a>
-                                    </div>
-                                </div>
-                                <div class="widget">
-                                    <h3 class="title">Share:</h3>
-                                    <div class="widget-tags widget-share">
-                                        <span class="fa fa-facebook"></span>
-                                        <span class="fa fa-dribbble"></span>
-                                        <span class="fa fa-pinterest-p"></span>
-                                        <span class="fa fa-twitter"></span>
-                                        <span class="fa fa-linkedin"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="canvas-overlay"></div>
-        </aside>
-    End Product Quick View ==-->
 
     <!--== Start Aside Search Menu ==-->
     <div class="search-box-wrapper">
