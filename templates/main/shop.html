@@ -1,0 +1,232 @@
+{% extends 'layout/layout.html' %}
+{% load static %}
+
+{% block title %}Интернет магазина игрушек - Каталог{% endblock %}
+
+{% block content %}
+    <!--== Start Shop Area Wrapper ==-->
+    <div class="product-area product-grid-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 order-0 order-lg-1">
+                    <div class="shop-toolbar-wrap">
+                        <div class="product-showing-status">
+                            <p class="count-result"><span>{{ product.count }} </span> товара в каталоге из  <span> {{ product.count }}</span></p>
+                        </div>
+                        <div class="product-view-mode">
+                            <nav>
+                                <div class="nav nav-tabs active" id="nav-tab" role="tablist">
+                                    <button class="nav-link active" id="column-three-tab" data-bs-toggle="tab" data-bs-target="#column-three" type="button" role="tab" aria-controls="column-three" aria-selected="true"><i class="fa fa-th"></i></button>
+
+                                    <button class="nav-link" id="nav-list-tab" data-bs-toggle="tab" data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list" aria-selected="false"><i class="fa fa-list"></i></button>
+
+                                    <button class="nav-link" id="column-two-tab" data-bs-toggle="tab" data-bs-target="#column-two" type="button" role="tab" aria-controls="column-two" aria-selected="true"><i class="fa fa-th-large"></i></button>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="product-sorting-menu product-sorting">
+                            <span class="current">Сортировать: <span>все товары <i class="fa fa-angle-down"></i></span></span>
+                            <ul>
+                                <li class="active"><a href="#" class="active">Все товары</a></li>
+                                <li><a href="#">По популярности</a></li>
+                                <li><a href="#">По отзывам</a></li>
+                                <li><a href="#">Новые товары</a></li>
+                                <li><a href="#">Дешевле <i class="lastudioicon-arrow-up"></i></a></li>
+                                <li><a href="#">Дороже <i class="lastudioicon-arrow-down"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="column-three" role="tabpanel" aria-labelledby="column-three-tab">
+                            <div class="row">
+                                {% for item in product %}
+                                    <div class="col-lg-3 col-md-4 col-sm-6">
+                                        <!-- Start Product Item -->
+                                        <div class="product-item">
+                                            <div class="product-thumb">
+                                                <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
+                                                <div class="product-action">
+                                                    <a class="action-quick-view" href="#"><i class="ion-ios-cart"></i></a>
+                                                    <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
+                                                    <a class="action-quick-view" href="#"><i class="ion-heart"></i></a>
+                                                    <a class="action-quick-view" href="#"><i class="ion-shuffle"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="rating">
+                                                    {% if item.star == 1 %}
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 2 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 3 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 4 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 5 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                </div>
+                                                <h4 class="title"><a href="{% url 'indexing:product-detail' item.pk %}">{{ item.namespace }}</a></h4>
+                                                <div class="prices">
+                                                    <span class="price">{{ item.price }} ₽</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Product Item -->
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
+                            <div class="row">
+                                {% for item in product %}
+                                    <div class="col-12 product-items-list">
+                                        <!-- Start Product Item -->
+                                        <div class="product-item">
+                                            <div class="product-thumb">
+                                                <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
+                                                <div class="product-action">
+                                                    <a class="action-quick-view" href="#"><i class="ion-ios-cart"></i></a>
+                                                    <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
+                                                    <a class="action-quick-view" href="#"><i class="ion-heart"></i></a>
+                                                    <a class="action-quick-view" href="#"><i class="ion-shuffle"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="rating">
+                                                    {% if item.star == 1 %}
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 2 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 3 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 4 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 5 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                </div>
+                                                <h4 class="title"><a href="{% url 'indexing:product-detail' item.pk %}">{{ item.namespace }}</a></h4>
+                                                <div class="prices">
+                                                    <span class="price">{{ item.price }} ₽</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Product Item -->
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="column-two" role="tabpanel" aria-labelledby="column-two-tab">
+                            <div class="row">
+                                {% for item in product %}
+                                    <div class="col-sm-6">
+                                        <!-- Start Product Item -->
+                                        <div class="product-item">
+                                            <div class="product-thumb">
+                                                <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
+                                                <div class="product-action">
+                                                    <a class="action-quick-view" href="#"><i class="ion-ios-cart"></i></a>
+                                                    <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
+                                                    <a class="action-quick-view" href="#"><i class="ion-heart"></i></a>
+                                                    <a class="action-quick-view" href="#"><i class="ion-shuffle"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <div class="rating">
+                                                    {% if item.star == 1 %}
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 2 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 3 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 4 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                    {% if item.star == 5 %}
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    {% endif %}
+                                                </div>
+                                                <h4 class="title"><a href="{% url 'indexing:product-detail' item.pk %}">{{ item.namespace }}</a></h4>
+                                                <div class="prices">
+                                                    <span class="price">{{ item.price }} ₽</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Product Item -->
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pagination-area">
+                                <nav>
+                                    <ul class="page-numbers">
+                                        <li>
+                                            <a class="page-number active" href="blog.html">1</a>
+                                        </li>
+                                        <li>
+                                            <a class="page-number" href="blog.html">2</a>
+                                        </li>
+                                        <li>
+                                            <a class="page-number" href="blog.html">3</a>
+                                        </li>
+                                        <li>
+                                            <a class="page-number next" href="blog.html">
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--== End Shop Area Wrapper ==-->
+{% endblock %}
