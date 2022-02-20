@@ -376,17 +376,17 @@
                     <div class="cart-content cart-content-padding">
                         <ul>
                             {% for item in cart %}
-                                {% with products=item.product %}
+                                {% with product=item.product %}
                                     <li class="single-product-cart">
                                         <div class="cart-img">
-                                            <a href="#"><img src="{% static 'assets/img/shop/details/nav1.jpg' %}" alt=""></a>
+                                            <a href="{% url 'indexing:product-detail' product.id %}"><img src="{{ product.picture.url }}" alt=""></a>
                                         </div>
                                         <div class="cart-title">
-                                            <h4><a href="#">{{ products  }}</a></h4>
+                                            <h4><a href="{% url 'indexing:product-detail' product.id %}">{{ product  }}</a></h4>
                                             <span> {{ item.quantity }} × <span class="price"> {{ item.price }} руб </span></span>
                                         </div>
                                         <div class="cart-delete">
-                                            <a href="#/"><i class="pe-7s-trash icons"></i></a>
+                                            <a href="{% url "indexing:cart_remove" product.id%}"><i class="pe-7s-trash icons"></i></a>
                                         </div>
                                     </li>
                                 {% endwith %}

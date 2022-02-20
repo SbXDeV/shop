@@ -27,11 +27,14 @@ class Shop(ListView):
     context_object_name = 'product'
     template_name = 'main/shop.html'
 
+    def get(self, request):
+        cart = Cart(request)
+        return render(request, 'main/index.html', {'cart': cart})
+
 
 class Contact(TemplateView):
     """ Страница контактной формы """
     template_name = 'main/content.html'
-
 
 class Politic(ListView):
     """ Страница политики конфиденциальности """
