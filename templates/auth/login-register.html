@@ -1,0 +1,95 @@
+{% extends 'layout/layout.html' %}
+{% load static %}
+
+{% block content %}
+    <!--== Start Page Title Area ==-->
+    <section class="page-title-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 m-auto">
+                    <div class="page-title-content text-center">
+                        <h2 class="title">Вход в личный кабинет</h2>
+                        <div class="bread-crumbs"><a href="{% url 'indexing:index' %}"> Главная страница </a><span class="breadcrumb-sep"> // </span><span class="active"> Вход в личный кабинет</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--== End Page Title Area ==-->
+
+    <!--== Start Login Wrapper ==-->
+    <section class="login-register-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 login-register-border">
+                    <div class="login-register-content">
+                        <div class="login-register-title mb-30">
+                            <h2>Авторизация</h2>
+                            <p>Мы рады вашему возвращению! Пожалуйста введите ваши данные для входа в личный кабинет. </p>
+                        </div>
+                        <div class="login-register-style login-register-pr">
+                            <form action="{% url 'indexing:login' %}" method="post">
+                                {% csrf_token %}
+                                <div class="login-register-input">
+                                    <input type="text" name="username" placeholder="Имя пользователя или почта">
+                                </div>
+                                <div class="login-register-input">
+                                    <input type="password" name="password" placeholder="Пароль">
+                                </div>
+                                                            {% for error in form.non_field_errors %}
+                                <div class="alert-danger">
+                                    <span class="text-black-50">{{ error }}</span>
+                                </div>
+                            {% endfor %}
+                                <div class="remember-me-btn">
+                                    <input type="checkbox">
+                                    <label>Запомнить вас?</label>
+                                </div>
+                                <div class="btn-style-3">
+                                    <button class="btn" type="submit">Вход</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="login-register-content login-register-pl">
+                        <div class="login-register-title mb-30">
+                            <h2>Регистрация</h2>
+                            <p>Создайте аккаунт в нашем магазине, это расширит функционал магазина и поможет вам отслеживать покупку. </p>
+                        </div>
+                        <div class="login-register-style">
+                            <form action="#" method="post">
+                                <div class="login-register-input">
+                                    <input type="text" name="user-name" placeholder="Имя пользователя">
+                                </div>
+                                <div class="login-register-input">
+                                    <input type="text" name="user-name" placeholder="Почтовый адрес">
+                                </div>
+                                <div class="login-register-input">
+                                    <input type="password" name="user-password" placeholder="Пароль">
+                                </div>
+                                <div class="login-register-paragraph">
+                                    <p>Ваши личные данные будут использоваться для поддержки вашего опыта на этом веб-сайте, для управления доступом к вашей учетной записи и для других возможностей, описанных в нашей  <a href="{% url 'indexing:police' %}">политике конфиденциальности.</a></p>
+                                </div>
+                                <div class="btn-style-3">
+                                    <button class="btn" onclick="window.location.href='my-account.html'" type="button">Зарегистрироваться</button>
+                                </div>
+                            </form>
+                            <div class="register-benefits">
+                                <h3>Зарегистрируйтесь сегодня, и вы сможете:</h3>
+                                <p>Защитить свои покупки с помощью системы Loke которая защищает вас от заказа до доставки. <br>Зарегистрируйтесь или войдите, и вы сможете :</p>
+                                <ul>
+                                    <li><i class="pe-7s-check icons"></i> Ускорить процесс покупки игрушек</li>
+                                    <li><i class="pe-7s-check icons"></i> Отслеживайть свои заказы легко </li>
+                                    <li><i class="pe-7s-check icons"></i> Вести историю всех ваших покупок </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--== End Login Wrapper ==-->
+{% endblock %}

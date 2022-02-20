@@ -79,7 +79,6 @@
                                                             <div class="product-thumb">
                                                                 <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
                                                                 <div class="product-action">
-                                                                    <a class="action-quick-view" href="#"><i class="ion-ios-cart"></i></a>
                                                                     <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
                                                                     <a class="action-quick-view" href="#"><i class="ion-heart"></i></a>
                                                                     <a class="action-quick-view" href="#"><i class="ion-shuffle"></i></a>
@@ -140,7 +139,6 @@
                                                                 <div class="product-thumb">
                                                                     <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
                                                                     <div class="product-action">
-                                                                        <a class="action-quick-view" href="#"><i class="ion-ios-cart"></i></a>
                                                                         <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
                                                                         <a class="action-quick-view" href="#"><i class="ion-heart"></i></a>
                                                                         <a class="action-quick-view" href="#"><i class="ion-shuffle"></i></a>
@@ -202,7 +200,6 @@
                                                                 <div class="product-thumb">
                                                                     <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
                                                                     <div class="product-action">
-                                                                        <a class="action-quick-view" href="#"><i class="ion-ios-cart"></i></a>
                                                                         <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
                                                                         <a class="action-quick-view" href="#"><i class="ion-heart"></i></a>
                                                                         <a class="action-quick-view" href="#"><i class="ion-shuffle"></i></a>
@@ -332,44 +329,6 @@
         </div>
     </section>
     <!--== End Divider Area Wrapper ==-->
-
-    <!--== Start Category Area Wrapper ==-->
-    <section class="category-area product-category2-area" data-aos="fade-up" data-aos-duration="1000">
-        <div class="container">
-            <div class="row category-items2">
-                <div class="col-md-6">
-                    <div class="category-item">
-                        <div class="thumb">
-                            <img class="w-100" src="{% static 'assets/img/category/4.png' %}" alt="Image">
-                            <div class="content">
-                                <div class="contact-info">
-                                    <h2 class="title text-white">Collection</h2>
-                                    <h4 class="price text-white">Flat <span>20%</span> Off</h4>
-                                </div>
-                                <a class="btn-theme" href="#">Shop Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="category-item mt-sm-50">
-                        <div class="thumb">
-                            <img class="w-100" src="{% static 'assets/img/category/5.pn' %}g" alt="Image">
-                            <div class="content">
-                                <div class="contact-info">
-                                    <h2 class="title">Collection</h2>
-                                    <h4 class="price">Flat <span>30%</span> Off</h4>
-                                </div>
-                                <a class="btn-theme" href="#">Shop Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--== End Category Area Wrapper ==-->
-
     <!--== Start Product Tab Area Wrapper ==-->
     <section class="product-area product-style2-area">
         <div class="container">
@@ -394,7 +353,6 @@
                                         <div class="product-thumb">
                                             <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
                                             <div class="product-action">
-                                                <a class="action-quick-view" href="#"><i class="ion-ios-cart"></i></a>
                                                 <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
                                                 <a class="action-quick-view" href="#"><i class="ion-heart"></i></a>
                                                 <a class="action-quick-view" href="#"><i class="ion-shuffle"></i></a>
@@ -445,41 +403,4 @@
         </div>
     </section>
     <!--== End Product Tab Area Wrapper ==-->
-
-    <!--== Start Blog Area Wrapper ==-->
-    <section class="blog-area blog-default-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-lg-6 m-auto">
-                    <div class="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
-                        <h2 class="title">Акции</h2>
-                        <div class="desc">
-                            <p>Порадовать ребенка легко по важному поводу или без. Выбирайте качественные и безопасные игрушки популярных брендов. Ориентируйтесь на возраст, увлечения малыша и ваш бюджет. Дарите подарки и получайте взамен хорошее настроение, улыбки и детский смех! </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" data-aos="fade-up" data-aos-duration="1300">
-                {% for items in sales %}
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <!--== Start Blog Post Item ==-->
-                    <div class="post-item">
-                        <div class="thumb">
-                            <a href="#"><img src="{{ items.picture.url }}" style="max-width: 370px ; max-height: 250px" alt="Image"></a>
-                        </div>
-                        <div class="content">
-                            <div class="meta">Акция <span class="dots"></span><span class="post-date">{{ items.date.date }}</span></div>
-                            <h4 class="title">
-                                <a href="#">{{ items.title }}</a>
-                            </h4>
-                            <a class="btn-theme" href="#">Read More</a>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <!--== End Blog Post Item ==-->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--== End Blog Area Wrapper ==-->
 {% endblock %}

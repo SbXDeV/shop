@@ -67,10 +67,10 @@
                             <a href="tel://+00123456789"><i class="fa fa-phone"></i> +7 499 380 79 36</a>
                             <a href="mailto://demo@example.com"><i class="fa fa-envelope"></i> asdlkqweuir324@gmail.com</a>
                             {% if request.user.is_authenticated %}
-                                <a href="#"><i class="fa fa-user"></i> Личный кабинет</a>
+                                <a href="{% url "indexing:profile" %}"><i class="fa fa-user"></i> Личный кабинет</a>
 
                             {% else %}
-                                <a href="#"><i class="fa fa-user"></i> Авторизация</a>
+                                <a href="{% url 'indexing:login' %}"><i class="fa fa-user"></i> Авторизация</a>
                             {% endif %}
                         </div>
                     </div>
@@ -113,14 +113,16 @@
                                         </div>
                                     {% else %}
                                         <div class="header-action-wishlist">
-                                            <button class="btn-wishlist" onclick="window.location.href=''">
+                                            <button class="btn-wishlist" onclick="window.location.href='{% url "indexing:login" %}'">
                                                 <i class="pe-7s-user"></i>
                                             </button>
                                         </div>
                                     {% endif %}
                                     <div class="header-action-cart">
                                         <button class="btn-cart cart-icon">
-                                            <span class="cart-count">01</span>
+                                            {% for item in cart %}
+                                                <span class="cart-count">{{ item.quantity }}</span>
+                                            {% endfor %}
                                             <i class="pe-7s-shopbag"></i>
                                         </button>
                                     </div>
@@ -170,7 +172,6 @@
                                         <li><a href="#">Для мальчиков</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Акции</a></li>
                             </ul>
                         </div>
                     </div>
@@ -183,7 +184,7 @@
                                     </button>
                                 </div>
                                 <div class="header-action-login">
-                                    <button class="btn-login" onclick="window.location.href='login-register.html'">
+                                    <button class="btn-login" onclick="window.location.href='{% url "indexing:profile" %}'">
                                         <i class="pe-7s-users"></i>
                                     </button>
                                 </div>
@@ -194,7 +195,9 @@
                                 </div>
                                 <div class="header-action-cart">
                                     <button class="btn-cart cart-icon">
-                                        <span class="cart-count">01</span>
+                                        {% for item in cart %}
+                                            <span class="cart-count">{{ item.quantity }}</span>
+                                        {% endfor %}
                                         <i class="pe-7s-shopbag"></i>
                                     </button>
                                 </div>
@@ -212,7 +215,7 @@
                                     </button>
                                 </div>
                                 <div class="header-action-login" style="padding-left: 50px">
-                                    <button class="btn-login" onclick="window.location.href='login-register.html'">
+                                    <button class="btn-login" onclick="window.location.href='{% url "indexing:login" %}'">
                                         <i class="pe-7s-users"></i>
                                     </button>
                                 </div>
@@ -365,44 +368,35 @@
                 <a class="cart-close" href="javascript:void(0);"><i class="pe-7s-close"></i></a>
                 <div class="sidebar-cart-all">
                     <div class="cart-header">
-                        <h3>Shopping Cart</h3>
+                        <h3>Корзина</h3>
                         <div class="close-style-wrap">
                             <span class="close-style close-style-width-1 cart-close"></span>
                         </div>
                     </div>
                     <div class="cart-content cart-content-padding">
                         <ul>
-                            <li class="single-product-cart">
-                                <div class="cart-img">
-                                    <a href="#"><img src="{% static 'assets/img/shop/details/nav1.jpg' %}" alt=""></a>
-                                </div>
-                                <div class="cart-title">
-                                    <h4><a href="#">Jigsaw Puzzles For Kids </a></h4>
-                                    <span> 1 × <span class="price"> $12.00 </span></span>
-                                </div>
-                                <div class="cart-delete">
-                                    <a href="#/"><i class="pe-7s-trash icons"></i></a>
-                                </div>
-                            </li>
-                            <li class="single-product-cart">
-                                <div class="cart-img">
-                                    <a href="shop-single-product.html"><img src="assets/img/shop/details/nav2.jpg" alt=""></a>
-                                </div>
-                                <div class="cart-title">
-                                    <h4><a href="shop-single-product.html">Bruder Toys Mini Ships </a></h4>
-                                    <span> 1 × <span class="price"> $59.00 </span></span>
-                                </div>
-                                <div class="cart-delete">
-                                    <a href="#/"><i class="pe-7s-trash icons"></i></a>
-                                </div>
-                            </li>
+                            {% for item in cart %}
+                                {% with products=item.product %}
+                                    <li class="single-product-cart">
+                                        <div class="cart-img">
+                                            <a href="#"><img src="{% static 'assets/img/shop/details/nav1.jpg' %}" alt=""></a>
+                                        </div>
+                                        <div class="cart-title">
+                                            <h4><a href="#">{{ products  }}</a></h4>
+                                            <span> {{ item.quantity }} × <span class="price"> {{ item.price }} руб </span></span>
+                                        </div>
+                                        <div class="cart-delete">
+                                            <a href="#/"><i class="pe-7s-trash icons"></i></a>
+                                        </div>
+                                    </li>
+                                {% endwith %}
+                            {% endfor %}
                         </ul>
                         <div class="cart-total">
-                            <h4>Subtotal: <span>$278.90</span></h4>
+                            <h4>Итог: <span>{{ cart.get_total_price }} Руб</span></h4>
                         </div>
                         <div class="cart-checkout-btn">
-                            <a class="cart-btn" href=#">view cart</a>
-                            <a class="checkout-btn" href="#">checkout</a>
+                            <a class="checkout-btn" href="{% url 'indexing:cart_detail' %}">Оформить заказ</a>
                         </div>
                     </div>
                 </div>

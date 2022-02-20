@@ -69,10 +69,14 @@
                         <p class="product-desc">{{ product.description }}</p>
                         <div class="quick-product-action">
                             <div class="action-top">
-                                <div class="pro-qty">
-                                    <input type="text" id="quantity" title="Quantity" value="01" />
-                                </div>
-                                <button class="btn btn-theme">Добавить в корзину</button>
+                                <form action="{% url 'indexing:cart_add' product.id %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="pro-qty">
+                                        <input type="text" id="quantity" name="quantity" title="quantity" value="01" />
+                                    </div>
+                                    <input class="btn btn-theme" value="Добавить в корзину" type="submit">
+                                </form>
+
                             </div>
                         </div>
                         <div class="widget">
