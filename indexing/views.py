@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
-from django.views.generic import ListView, TemplateView, DetailView, FormView
+from django.views.generic import ListView, TemplateView, DetailView, FormView, CreateView
 
 from indexing.cart import Cart
 from indexing.forms import LoginForm, CartAddProductForm
@@ -149,3 +150,9 @@ class ShopCategoryEvent(ListView):
     template_name = 'shop/shop_event.html'
     model = Product
     context_object_name = 'product'
+
+
+class RegisterUser(CreateView):
+    form_class = UserCreationForm
+    template_name = 'auth/login-register.html'
+    success_url = '/'
