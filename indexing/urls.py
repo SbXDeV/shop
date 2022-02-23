@@ -19,4 +19,13 @@ urlpatterns = [
     path('detail', views.cart_detail, name='cart_detail'),
     path('add/(<product_id>)/', views.cart_add, name='cart_add'),
     path('remove/<product_id>)/', views.cart_remove, name='cart_remove'),
+    # Магазинные страницы
+    path('/shop/categoryQ=1', views.ShopCategoryClutch.as_view(), name='clutch'),
+    path('/shop/categoryQ=2', views.ShopCategoryGame.as_view(), name='game'),
+    path('/shop/categoryQ=3', views.ShopCategoryPussy.as_view(), name='pussy'),
+    path('/shop/categoryQ=4', views.ShopCategoryAccess.as_view(), name='access'),
+    path('/shop/categoryQ=5', views.ShopCategoryPeople.as_view(), name='people'),
+    path('/shop/categoryQ=6', views.ShopCategoryRadio.as_view(), name='radio'),
+    path('/shop/categoryQ=7', views.ShopCategoryGamePass.as_view(), name='gamepass'),
+    path('/shop/categoryQ=8', views.ShopCategoryEvent.as_view(), name='event'),
 ]

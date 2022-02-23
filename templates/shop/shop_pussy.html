@@ -13,51 +13,55 @@
                         <div class="tab-pane fade show active" id="column-three" role="tabpanel" aria-labelledby="column-three-tab">
                             <div class="row">
                                 {% for item in product %}
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <!-- Start Product Item -->
-                                        <div class="product-item">
-                                            <div class="product-thumb">
-                                                <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
-                                                <div class="product-action">
-                                                    <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
+                                    {% for i in item.category.all %}
+                                        {% if i.title == 'Мягкие игрушки' %}
+                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                <!-- Start Product Item -->
+                                                <div class="product-item">
+                                                    <div class="product-thumb">
+                                                        <img src="{{ item.picture.url }}" style="max-height: 201px; max-width: 191px;" alt="Image">
+                                                        <div class="product-action">
+                                                            <a class="action-quick-view" href="{% url 'indexing:product-detail' item.pk %}"><i class="ion-arrow-expand"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <div class="rating">
+                                                            {% if item.star == 1 %}
+                                                                <span class="fa fa-star"></span>
+                                                            {% endif %}
+                                                            {% if item.star == 2 %}
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            {% endif %}
+                                                            {% if item.star == 3 %}
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            {% endif %}
+                                                            {% if item.star == 4 %}
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            {% endif %}
+                                                            {% if item.star == 5 %}
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            {% endif %}
+                                                        </div>
+                                                        <h4 class="title"><a href="{% url 'indexing:product-detail' item.pk %}">{{ item.namespace }}</a></h4>
+                                                        <div class="prices">
+                                                            <span class="price">{{ item.price }} ₽</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <!-- End Product Item -->
                                             </div>
-                                            <div class="product-info">
-                                                <div class="rating">
-                                                    {% if item.star == 1 %}
-                                                        <span class="fa fa-star"></span>
-                                                    {% endif %}
-                                                    {% if item.star == 2 %}
-                                                        <span class="fa fa-star"></span>
-                                                        <span class="fa fa-star"></span>
-                                                    {% endif %}
-                                                    {% if item.star == 3 %}
-                                                        <span class="fa fa-star"></span>
-                                                        <span class="fa fa-star"></span>
-                                                        <span class="fa fa-star"></span>
-                                                    {% endif %}
-                                                    {% if item.star == 4 %}
-                                                        <span class="fa fa-star"></span>
-                                                        <span class="fa fa-star"></span>
-                                                        <span class="fa fa-star"></span>
-                                                        <span class="fa fa-star"></span>
-                                                    {% endif %}
-                                                    {% if item.star == 5 %}
-                                                        <span class="fa fa-star"></span>
-                                                        <span class="fa fa-star"></span>
-                                                        <span class="fa fa-star"></span>
-                                                        <span class="fa fa-star"></span>
-                                                        <span class="fa fa-star"></span>
-                                                    {% endif %}
-                                                </div>
-                                                <h4 class="title"><a href="{% url 'indexing:product-detail' item.pk %}">{{ item.namespace }}</a></h4>
-                                                <div class="prices">
-                                                    <span class="price">{{ item.price }} ₽</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Product Item -->
-                                    </div>
+                                        {% endif %}
+                                    {% endfor %}
                                 {% endfor %}
                             </div>
                         </div>

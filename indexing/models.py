@@ -21,6 +21,7 @@ class Product(models.Model):
         (2, 'Для Девочек'),
         (3, 'Для Малышей'),
     )
+
     picture = models.ImageField(upload_to='media/', verbose_name='Фотография продукта')
     namespace = models.CharField(max_length=100, verbose_name='Наименование товара')
     trand = models.BooleanField(verbose_name='Трендовый товар', default=True)
@@ -30,6 +31,7 @@ class Product(models.Model):
     description = models.TextField(verbose_name='Описание товара')
     sku = models.IntegerField(verbose_name='Код товара', default=random.randint(0, 999999))
     gender = models.IntegerField(choices=type_choice, verbose_name='Принадлежность товара')
+
 
     class Meta:
         verbose_name = 'Товары сайта'

@@ -27,9 +27,11 @@ class Shop(ListView):
     context_object_name = 'product'
     template_name = 'main/shop.html'
 
+
 class Contact(TemplateView):
     """ Страница контактной формы """
     template_name = 'main/content.html'
+
 
 class Politic(ListView):
     """ Страница политики конфиденциальности """
@@ -99,3 +101,51 @@ def cart_remove(request, product_id):
 def cart_detail(request):
     cart = Cart(request)
     return render(request, 'cart/shop-checkout.html', {'cart': cart})
+
+
+class ShopCategoryClutch(ListView):
+    template_name = 'shop/shop_clutch.html'
+    model = Product
+    context_object_name = 'product'
+
+
+class ShopCategoryGame(ListView):
+    template_name = 'shop/shop_game.html'
+    model = Product
+    context_object_name = 'product'
+
+
+class ShopCategoryPussy(ListView):
+    template_name = 'shop/shop_game.html'
+    model = Product
+    context_object_name = 'product'
+
+
+class ShopCategoryAccess(ListView):
+    template_name = 'shop/shop_access.html'
+    model = Product
+    context_object_name = 'product'
+
+
+class ShopCategoryPeople(ListView):
+    template_name = 'shop/shop_access.html'
+    model = Product
+    context_object_name = 'product'
+
+
+class ShopCategoryRadio(ListView):
+    template_name = 'shop/shop_radio.html'
+    model = Product
+    context_object_name = 'product'
+
+
+class ShopCategoryGamePass(ListView):
+    template_name = 'shop/shop_gamepass.html'
+    model = Product
+    context_object_name = 'product'
+
+
+class ShopCategoryEvent(ListView):
+    template_name = 'shop/shop_event.html'
+    model = Product
+    context_object_name = 'product'
